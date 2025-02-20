@@ -13,7 +13,15 @@ module synth(
     input[7:0] adsr_ai, adsr_di, adsr_s, adsr_ri,
     input[11:0] osc_count,
     input[7:0] filter_a, filter_b,
-    output data
+    output data,
+    // Debug
+    output dbg_clk_sample,
+    output dbg_clk_adsr,
+    output dbg_osc0,
+    output dbg_env0,
+    output dbg_adsr0,
+    output dbg_adsr_reg0,
+    output dbg_adsr_filt0
 );
     wire clk_mod, clk_sample, clk_sample_x2, clk_adsr, clk_mult;
     clkdiv clki (
@@ -25,6 +33,14 @@ module synth(
         .clk_adsr(clk_adsr), // 40000/512=78.125Hz
         .clk_mult(clk_mult)
     );
+
+    assign dbg_clk_sample = clk_sample;
+    assign dbg_clk_adsr = clk_adsr;
+    assign dbg_osc0 = osc_data[0];
+    assign dbg_env0 = envelope[0];
+    assign dbg_adsr0 = adsr_data[0];
+    assign dbg_adsr_reg0 = adsr_data_reg[0];
+    assign dbg_adsr_filt0 = filt_data[0];
 
     // Synchronize the trigger and resets to the clk_adsr clock, the slowest one
     // Note: This means the signals need to be held for that long!
