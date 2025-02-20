@@ -10,7 +10,6 @@ module oscillator(
 );
 
     reg[11:0] counter;
-    reg data_buf;
 
     always @(posedge clk) begin
         if (rstn == 0) begin
