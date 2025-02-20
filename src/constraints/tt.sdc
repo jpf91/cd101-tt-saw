@@ -131,14 +131,14 @@ set clk_div32_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clk_mul
 set clk_div64_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[5].inst.q}] -filter "direction == output"]
 set clk_div128_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[6].inst.q}] -filter "direction == output"]
 set clk_div256_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clk_sample_x2}] -filter "direction == output"]
-set clk_div512_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clk_sample}] -filter "direction == output"]
+set clk_div512_pin [get_pins -of_object [get_nets -hierarchical {stop.dbg_clk_sample}] -filter "direction == output"]
 set clk_div1024_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[10].inst.clk}] -filter "direction == output"]
 set clk_div2048_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[10].inst.q}] -filter "direction == output"]
 set clk_div4096_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[11].inst.q}] -filter "direction == output"]
 set clk_div8192_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[12].inst.q}] -filter "direction == output"]
 set clk_div16384_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[13].inst.q}] -filter "direction == output"]
 set clk_div32768_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.clki.gen[14].inst.q}] -filter "direction == output"]
-set clk_div65536_pin [get_pins -of_object [get_nets -hierarchical {stop.syn.adsri.clk}] -filter "direction == output"]
+set clk_div65536_pin [get_pins -of_object [get_nets -hierarchical {stop.dbg_clk_adsr}] -filter "direction == output"]
 create_generated_clock -name {clk_div2} -source {clk} -divide_by 2 $clk_div2_pin
 create_generated_clock -name {clk_div4} -source $clk_div2_pin -divide_by 2 $clk_div4_pin
 create_generated_clock -name {clk_div8} -source $clk_div4_pin -divide_by 2 $clk_div8_pin
